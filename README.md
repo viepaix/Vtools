@@ -15,20 +15,17 @@ Future versions will include more powerful and practical tools to expand its fun
 
 ## Installation
 1. Clone the repository:  
-   ```
-   bash
-   git clone https://github.com/your-repo/vtools.git```
+   ```bash
+   git clone https://github.com/your-repo/vtools.git
 
 2. Navigate to the directory:  
-   ```
-   bash
-   cd vtools```
+   ```bash
+   cd vtools
 
 3. Install dependencies (if any).
 4. Run the program:  
-   ```
-   bash
-   python vtools.py``` 
+   ```bash
+   python vtools.py
 
 ## Usage
 ### ROT13 Conversion
