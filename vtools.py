@@ -4,6 +4,7 @@ import re
 import os
 import signal
 import sys
+from colored import Fore,Back,Style
 
 banner = """
                             ,----,                            
@@ -28,7 +29,7 @@ banner = """
 
 
 def sig_handler(sig, frame):
-    print("\n\n|x| Leaving program...")
+    print(f"\n\n{Fore.red}{Back.black}|x| Leaving program...{Style.reset}\n")
     sys.exit(1)
 
 signal.signal(signal.SIGINT, sig_handler)
@@ -37,47 +38,41 @@ signal.signal(signal.SIGINT, sig_handler)
 
 def hExA():
     
-    print("\n|i| Select an option or you don't know how to read")
-    print("\n1. Hexadecimal to string\n2. String to Hexadecimal")
+    print(f"\n{Fore.green}|i| Select an option or you don't know how to read{Style.reset}")
+    print(f"\n{Fore.green}1. Hexadecimal to string\n2. String to Hexadecimal{Style.reset}")
     
     option = int(input("➤ "))
     
-    # Convert Hexadecimal to String function ** NOT CREATED YET
+    # Convert Hexadecimal to String function
 
     def hexaToStr():
     
-        text = input("\n|~| Insert Hexadecimal to convert: ")
+        text = input(f"\n{Fore.yellow}|~|{Fore.green} Insert Hexadecimal to convert: {Style.reset}")
 
         if (text == "0x0"):
-            print(f"\n\n|x| Not value for {text}")
+            print(f"\n\n{Fore.red}|x| Not value for {text}{Style.reset}")
             hexaToStr()
         elif (text[:2] == "0x"):
-            # 0x686f6c61
-            # 686f6c61
             text = bytes.fromhex(text[2::]).decode("utf-8")
-            print("\n|~| Converted text:", text)
+            print(f"\n{Fore.light_green}|~| Converted hexadecimal:{Style.reset}", text)
         elif not text:
-            print("\n\n|x| Insert a valid text\n")
+            print(f"\n\n{Fore.red}|x| Insert a valid text{Style.reset}\n")
             hexaToStr()
         else:
             text = bytes.fromhex(text).decode("utf-8")
-            print("\n|~| Converted text:", text)
-
-
-
+            print(f"\n{Fore.light_green}|~| Converted hexadecimal:{Style.reset} {text}")
 
     # Convert String to Hexadecimal
 
     def strToHexa():
 
-        text = input("\n|~| Insert text to convert: ")
-        
+        text = input(f"\n{Fore.yellow}|~| {Fore.green}Insert text to convert: {Style.reset}")
         hex_word = ""
 
         for letter in text:
             hex_word += hex(ord(letter))[2::]
 
-        print(hex_word)
+        print(f"{Fore.light_green}|+| Converted text:{hex_word}")
 
     
     if(option == 1):
@@ -85,14 +80,14 @@ def hExA():
     elif(option == 2):
         strToHexa()
     else:
-        print("\n\n|!| Select a valid option\n")
+        print("\n\n{Fore.red}|!| Select a valid option{Style.reset}\n")
 
 
 # ROT13 function
 
 def rOt13():
     
-    text = input("|~| Insert text to convert: ")
+    text = input(f"{Fore.green}|~| Insert text to convert: {Style.reset}")
 
     new_text = ""
 
@@ -109,15 +104,21 @@ def rOt13():
 
     new_text = re.sub(pattern, replace, text)
 
-    print(new_text)
+    print(f"\n{Fore.light_green}|+| Input text: {text}\n\n|+| Converted text: {new_text}{Style.reset}")
+
+# base64 Converter ** NOT CREATED YET
+
+def bAsE64():
+    text = input("\n|~| Insert text to convert: ")
+    print(f"{text}")
 
 # Menu for options
 
 def menu():
 
-    print(banner)
-    print("\n\n|i| Select one option from below.\n")
-    print("1. ROT13\n2. Hexadecimal\n3.more")
+    print(f"{Fore.red}{Style.bold}{banner}{Style.reset}")
+    print(f"\n\n{Fore.yellow}|i| {Fore.green}Select one option from below.{Style.reset}\n")
+    print(f"{Fore.green}1. ROT13\n2. Hexadecimal\n3. Base64{Style.reset}")
 
     option = int(input("\n➤ "))
 
@@ -125,6 +126,10 @@ def menu():
         rOt13()
     elif(option == 2):
         hExA()
+    elif(option == 3):
+        bAsE64()
+    else:
+        print(f"\n\n{Fore.red}{Back.black}|x|Option not found{Style.reset}\n")
 
 # Main function calling only the menu
 
