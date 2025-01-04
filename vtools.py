@@ -45,7 +45,26 @@ def hExA():
     # Convert Hexadecimal to String function ** NOT CREATED YET
 
     def hexaToStr():
-        print("not created yet")
+    
+        text = input("\n|~| Insert Hexadecimal to convert: ")
+
+        if (text == "0x0"):
+            print(f"\n\n|x| Not value for {text}")
+            hexaToStr()
+        elif (text[:2] == "0x"):
+            # 0x686f6c61
+            # 686f6c61
+            text = bytes.fromhex(text[2::]).decode("utf-8")
+            print("\n|~| Converted text:", text)
+        elif not text:
+            print("\n\n|x| Insert a valid text\n")
+            hexaToStr()
+        else:
+            text = bytes.fromhex(text).decode("utf-8")
+            print("\n|~| Converted text:", text)
+
+
+
 
     # Convert String to Hexadecimal
 
