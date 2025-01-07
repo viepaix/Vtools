@@ -112,13 +112,49 @@ def bAsE64():
     text = input("\n|~| Insert text to convert: ")
     print(f"{text}")
 
+# binary Converter ** NOT FINISHED
+
+def bInArY():
+
+    def op1(convert):
+        print(f"\n\tYour input: {convert}")
+        print(f"\tConverted to binary: {bin(int(convert))[2::]}")
+
+        cont = input(f"\nYou want to convert more? y/n: ")
+
+        if(cont == "y"):
+            pass
+        elif(cont == "n"):
+            exit(0)
+        else:
+            print(f"\n\n|x| {cont} is not a valid option")
+
+    def op2():
+        x = int(input("Number 1: "))
+        y = int(input("Number 2: "))
+        result = x ^ y
+        print(result)
+
+    print(f"\n|~| Options\n\t1. Get the binary of a number or string\n2. XOR Binary\n3. idk")
+
+    option = int(input("\n➤ "))
+
+    if(option == 1):
+        while True:
+            convert = input("\n\n|+| Get binary of: ")
+            op1(convert)
+    elif(option == 2):
+        op2()
+    else:
+        print(f"\n\n|x| Option {option} not found!\n")
+
 # Menu for options
 
 def menu():
 
     print(f"{Fore.red}{Style.bold}{banner}{Style.reset}")
     print(f"\n\n{Fore.yellow}|i| {Fore.green}Select one option from below.{Style.reset}\n")
-    print(f"{Fore.green}1. ROT13\n2. Hexadecimal\n3. Base64{Style.reset}")
+    print(f"{Fore.green}1. ROT13\n2. Hexadecimal\n3. Base64{Style.reset}\n4. Binary")
 
     option = int(input("\n➤ "))
 
@@ -128,6 +164,8 @@ def menu():
         hExA()
     elif(option == 3):
         bAsE64()
+    elif(option == 4):
+        bInArY()
     else:
         print(f"\n\n{Fore.red}{Back.black}|x|Option not found{Style.reset}\n")
 
