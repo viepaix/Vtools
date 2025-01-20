@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+"""
+This script generates a reverse shell payload for Node.js applications.
+
+[!] original script by: Ajinabraham https://github.com/ajinabraham/Node.Js-Security-Course/blob/master/nodejsshell.py
+
+*I modify this to use it in python3*
+
+This is for educational purposes only. Do not use this script for illegal activities.
+"""
+
 import sys, signal, time
 
 from pwn import *
